@@ -1,0 +1,126 @@
+input:
+
+1.
+    db.bank.insert({accountNo:"a001",balance:1000,customerDetails:{customerId:"c001",
+    customerName:"jeena",street:"porur",city:"chennai",loan:5000,deposit:1000},
+    branchDetails:{branchName:"Branch1",bCity:"chennai",Assets:50000}})
+2.
+    db.bank.insert({accountNo:"a002",balance:2000,customerDetails:{customerId:"c002",
+    customerName:"jose",street:"dlf",city:"chennai",loan:0,deposit:2000},
+    branchDetails:{branchName:"Branch2",bCity:"chennai",Assets:60000}})
+3.
+    db.bank.insert({accountNo:"a003",balance:0,customerDetails:{customerId:"c003",
+    customerName:"jessy",street:"ptr",city:"pune",loan:5000,deposit:0},
+    branchDetails:{branchName:"Branch3",bCity:"pune",Assets:50000}})
+4.
+    db.bank.insert({accountNo:"a004",balance:1000,customerDetails:{customerId:"c004",
+    customerName:"jibin",street:"navi",city:"pune",loan:0,deposit:1000},
+    branchDetails:{branchName:"Branch4",bCity:"pune",Assets:70000}})
+5.
+
+    db.bank.insert({accountNo:"a005",balance:1000,customerDetails:{customerId:"c010",
+    customerName:"sona",street:"navi Hill",city:"pune",loan:4000,deposit:2000},
+    branchDetails:{branchName:"Branch4",bCity:"pune",Assets:70000}})
+
+6.
+    db.bank.insert({accountNo:"a006",balance:800,customerDetails:{customerId:"c005",
+    customerName:"Ram",street:"navi",city:"pune",loan:5000,deposit:800},
+    branchDetails:{branchName:"Branch3",bCity:"pune",Assets:50000}})
+
+7.
+    db.bank.insert({accountNo:"a007",balance:1000,customerDetails:{customerId:"c006",
+    customerName:"manu",street:"porur",city:"chennai",loan:5000,deposit:1000},
+    branchDetails:{branchName:"Branch1",bCity:"chennai",Assets:50000}})
+8.
+    db.bank.insert({accountNo:"a008",balance:7000,customerDetails:{customerId:"c007",
+    customerName:"arun",street:"porur",city:"chennai",loan:0,deposit:7000},
+    branchDetails:{branchName:"Branch6",bCity:"Hyderabad",Assets:80000}})
+9.
+
+    db.bank.insert({accountNo:"a009",balance:1000,customerDetails:{customerId:"c008",
+    customerName:"anil",street:"jp nagar",city:"banglore",loan:0,deposit:1000},
+    branchDetails:{branchName:"Branch5",bCity:"banglore",Assets:60002}})
+10.
+    db.bank.insert({accountNo:"a010",balance:1000,customerDetails:{customerId:"c009",
+    customerName:"meera",street:"clr",city:"banglore",loan:0,deposit:1000},
+    branchDetails:{branchName:"Branch5",bCity:"banglore",Assets:60002}})
+
+db.bank.find()
+    
+ 1. Choose appropriate primary key(s)
+    
+    primary key:accountNo
+ 
+ 2. Create index on primary key(s)
+    
+    db.bank.ensureIndex({accountNo:1},{unique:true})  
+    db.bank.getIndexes() 
+ 
+ 3. The names and cities of all borrowers.   
+    
+    db.bank.find({"customerDetails.loan":{$nin:[0]}},
+    {"customerDetails.customerName":1,"customerDetails.city":1})
+    
+ 4. The names of borrowers who live in Chennai. 
+    
+    db.bank.find({"customerDetails.loan":{$nin:[0]},"customerDetails.city":"chennai"},
+    {"customerDetails.customerName":1,"customerDetails.city":1})
+ 
+ 5. Find the name, city, and assets of the branch with the largest assets. 
+
+    db.bank.find({},{"branchDetails.branchName":1,"branchDetails.bCity":1,
+        "branchDetails.Assets":1}).sort({"branchDetails.Assets":-1}).limit(1)
+    
+ 6. The names and cities of customers who have a loan at Pune branch.    
+    
+    db.bank.find({"customerDetails.loan":{$nin:[0]},"customerDetails.city":"pune"},
+    {"customerDetails.customerName":1,"customerDetails.city":1})
+ 
+ 7. Find the number of accounts with balances between 700 and 900. 
+    
+     db.bank.count({$and:[{balance:{$gt:700}},{balance:{$lt:900}}]})
+    
+ 8. The names of customers with both deposit and loans at Pune branch.  
+    
+    db.bank.find({"customerDetails.loan":{$nin:[0]},"customerDetails.deposit":{$nin:[0]},
+     "branchDetails.bCity":"pune"},
+    {"customerDetails.customerName":1})
+    
+ 9. The customers whose total loans are greater than the total amount 
+    in their bank accounts
+     db.bank.find("this.customerDetails.loan>this.balance")
+    
+ 10. The names of customers living on streets with names ending in "Hill".  
+     
+     db.bank.find({"customerDetails.street":{$regex:/.*Hill/}},
+     {"customerDetails.customerName":1}) 
+
+ 11. The names of customers with an account but not a loan at Pune branch.    
+    
+     db.bank.find({"customerDetails.loan":{$in:[0]},"customerDetails.city":"pune"},
+     {"customerDetails.customerName":1})
+ 12. The names of branches whose assets are greater than the assets of
+     all branches in    Hyderabad.
+     
+     db.bank.aggregate([{$match:{"branchDetails.bCity":"Hyderabad"}},
+     {$group:{_id:{},asset:{$sum:"$branchDetails.Assets"}}}, 
+     {$project:{$lt:["$branchDetails.Assets","asset"]}}]) 
+    
+ 
+ 13. The branch with the largest average balance. 
+     
+     db.bank.aggregate([{$group:{_id:"$branchDetails.branchName",
+     AvgBalance:{$avg:"$balance"}}},{$sort:{AvgBalance:-1}},{$limit:1}])
+  
+ 14. The branch name and number of customers for each branch
+     
+      db.bank.aggregate([{$group:{_id:"$branchDetails.branchName" ,
+          total:{$sum:1}}}]).pretty()
+     
+   
+ 15. Deposit an additional Rs. 20,000 to Ram’s bank account. 
+     
+     db.bank.update({"customerDetails.customerName":"Ram"},
+        {$inc:{"customerDetails.deposit":20000}})
+    
+     db.bank.find({"customerDetails.customerName":"Ram"})
