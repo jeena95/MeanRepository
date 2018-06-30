@@ -1,0 +1,30 @@
+var http=require("http");
+var inv=require("./crect");
+//var r=require("Rectangle");
+//var r1=new Rectangle(10.20);
+http.createServer(function(req,res)
+{
+   if(req.url=="/rectangle/area") 
+   {
+    new Rectangle(10.20);
+    var result = inv.calculateArea();
+    res.write("area is "+result.toString());
+    res.end();
+   
+   }
+
+   else if(req.url=="/rectangle/perimeter")
+   {
+    new Rectangle(10.20);
+    var result=inv.perimeter();
+    res.write("perimeter is "+result);
+    res.end();
+   }
+   
+   else
+   {
+       res.end("404 error...data not found");
+
+   }
+}).listen(3000);
+console.log("server listening to this port 3000");

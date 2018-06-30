@@ -1,0 +1,9 @@
+var http=require('http');
+var server=http.createServer(function(request,response){
+console.log('request starting...');
+//respond
+response.write('Hi client!')
+response.end();
+});
+server.listen(3000);
+console.log('server running at http://172.29.122.110:3000/');

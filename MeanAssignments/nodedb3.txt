@@ -1,0 +1,27 @@
+var MongoClient=require('mongodb').MongoClient;
+var empDoc=[{ empid: '103',
+            ename: 'jessy',
+            salary: 7000,
+            deptinfo: { dname: 'finance', Location: 'bangalore' } },
+            { empid: '104',
+            ename: 'jibin',
+            salary: 6000,
+            deptinfo: { dname: 'sales', Location: 'bangalore' } }]
+MongoClient.connect('mongodb://127.0.0.1:27017/bank',function(err,db){
+    if(err){
+   
+        console.log(err);
+       }
+    else{
+   
+        var resultSet=db.collection('Employee').insertMany(empDoc,function(err,result){
+        if(err)throw err;
+        else{
+            console.log("inserted successfully")
+        }
+    
+    
+    db.close();
+   })
+}
+});

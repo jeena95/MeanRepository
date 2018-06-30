@@ -1,0 +1,23 @@
+MongoClient=require('mongodb').MongoClient;
+var rectangle=require('./rectangle');
+
+MongoClient.connect('mongodb://127.0.0.1:27017/bank',function(err,db){
+    if(err){
+   
+        console.log(err);
+       }
+    else{
+   
+        var resultSet=db.collection('rectangle').find().toArray(function(err, result){
+         if(err) throw err;
+         console.log(result); 
+         for(var i=0;i<result.length;i++)
+         {
+             console.log("Area :"+rectangle.calcArea(result[i].length,result[i].breadth))
+         }   
+      
+       })
+    }
+        
+    db.close();
+});

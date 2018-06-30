@@ -1,0 +1,19 @@
+var http=require("http");
+var inv=require("./tempbl");
+var a=40; 
+http.createServer(function(req,res){
+ 
+    if(req.url==="/celsiustofahrenheit") {
+     var b= inv.getCelsius(a);
+     res.write(b.toString());
+     res.end();
+    } else if(req.url==="/fahrenheittocelsius"){
+      var c= inv.getFahrenheit(a);
+      res.write(c.toString());
+      res.end();
+    }else {
+        res.end("404 error...Data not found");
+    }
+    
+}).listen(3000);
+console.log("server listening on port 3000");

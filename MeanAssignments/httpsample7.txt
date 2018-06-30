@@ -1,0 +1,25 @@
+var http=require("http");
+var inv=require("./rectanglebl");
+http.createServer(function(req,res)
+{
+   if(req.url=="/rectangle/area") 
+   {
+   var result = inv.area(10,20);
+    res.write("area is "+result);
+    res.end();
+   
+   }
+   else if(req.url=="/rectangle/perimeter")
+   {
+    var result=inv.perimeter(10,20);
+    res.write("perimeter is "+result);
+    res.end();
+   }
+   
+   else
+   {
+       res.end("404 error...data not found");
+
+   }
+}).listen(3000);
+console.log("server listening to this port 3000");

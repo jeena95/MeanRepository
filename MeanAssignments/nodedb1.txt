@@ -1,0 +1,16 @@
+var MongoClient=require('mongodb').MongoClient;
+var findQuery={empid:"101"}
+MongoClient.connect('mongodb://127.0.0.1:27017/bank',function(err,db){
+    if(err){
+   
+        console.log(err);
+       }
+    else{
+   
+        var resultSet=db.collection('Employee').find(findQuery);
+        resultSet.each(function(err,doc){
+        console.log(doc);
+        })
+        }
+    db.close();
+});

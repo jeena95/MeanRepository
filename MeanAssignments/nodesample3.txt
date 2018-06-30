@@ -1,0 +1,40 @@
+var http=require("http");
+var fs=require("fs");
+var qs=require("querystring");
+var fh=require("./tempbl");
+http.createServer(function(req,res){
+    console.log(req.method)
+    if(req.method=="GET") {
+       res.end(` <!DOCTYPE html>
+        <html>
+        <head>
+        <title>Fill out this form</title>
+        </head>
+        <body>
+            <h1>fill out this form</h1>
+            <form action="/" method="post">
+                <label>Fahren</label>
+                <input type="text" id="fahren" name="fahren"
+                placeholder="Fahrenheit temperature" required/>        
+                <button>Send</button>
+            </form>
+        </body>
+        </html>
+        `);
+    } else if(req.method=="POST"){
+        var body="";
+        req.on("data",function(chunk){
+            body+=chunk;
+            console.log("data");
+        });
+        req.on("end",function(){
+            var obj=qs.parse(body);
+            console.log(obj.fahren);
+            fahren=parseFloat(obj.fahren);
+            var celsius=fh.getCelsius(fahren);   
+            res.end("Fahren="+ fahren.toString() +
+                   "  celsius="+celsius.toString());
+        });
+    }
+}).listen(3000);
+console.log("Form server listening on port 3000");
