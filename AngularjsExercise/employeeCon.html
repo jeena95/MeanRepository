@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="/angular.min.js" ></script>
+	<script>
+		var app=angular.module("myApp",[]);
+		app.controller("myCtrl",function($scope){
+ 
+ 			$scope.employees=[{empId:'e101',empName:'Ram'},{empId:'e102',empName:'Jeena'}];
+		});
+	</script>
+</head>
+<body ng-App="myApp" ng-controller="myCtrl">
+	<table border="1">
+			<tr>
+				<th>Employee Id</th>
+				<th>Employee Name</th>		
+			</tr>
+	
+           <tr ng-repeat="employee in employees">
+				
+				<td>{{employee.empId}}</td>
+				<td>{{employee.empName}}</td>
+		   </tr>
+	</table>	   	
+</body>
+</html>
+
+

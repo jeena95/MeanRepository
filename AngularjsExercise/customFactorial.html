@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="/angular.min.js" ></script>
+<script type="text/javascript">
+var app=angular.module("customFilterApp",[]);
+app.controller("customFilterCtrl",function($scope){	
+$scope.num=4;
+});
+app.filter('factorial',function(){
+	return function(item){
+		var fact=1;
+				for(var i=1;i<=item;i++)
+				{
+					fact=fact*i;
+				}
+
+				return fact;
+	};
+});
+</script>
+</head>
+<body ng-App="customFilterApp" ng-controller="customFilterCtrl">
+	<p>
+		{{num|factorial}}
+	</p>
+</body>
+</html>

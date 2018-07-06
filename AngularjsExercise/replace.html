@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="/angular.min.js" ></script>
+<script type="text/javascript">
+var app=angular.module("customFilterApp",[]);
+app.controller("customFilterCtrl",function($scope){	
+$scope.name="044-567868";
+});
+app.filter('replace',function(){
+	return function(name){
+		var string1=name.split("-");
+		var string2=string1.join();
+        var newString=string2.replace(",",'\t');
+        return newString;
+	};
+});
+</script>
+</head>
+<body ng-App="customFilterApp" ng-controller="customFilterCtrl">
+	<p>
+		{{name|replace}}
+	</p>
+</body>
+</html>

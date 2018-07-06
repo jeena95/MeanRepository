@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+	    table,th,td{border: 1px solid red}
+		th{color: blue}
+	</style>
+	<script src="/angular.min.js" >
+	</script>
+</head>
+<body ng-App="" ng-init="employees=[{empId:'e101',empName:'Ram'},{empId:'e102',empName:'Jeena'}]">
+	
+		<table>
+			<tr>
+				<th>Employee Id</th>
+				<th>Employee Name</th>		
+			</tr>
+			
+			<tr ng-repeat="employee in employees">
+				
+				<td>{{employee.empId}}</td>
+				<td>{{employee.empName}}</td>
+			</tr>
+		</table>
+		
+
+		
+
+		
+</html>

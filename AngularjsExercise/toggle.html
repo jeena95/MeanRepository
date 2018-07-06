@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<script src="/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="personCtrl">
+
+<button ng-click="toggle()">Show user</button>
+<h1> phones</h1>
+<p ng-show="myVar">
+
+
+{{Apple}}<br>
+{{samsung}}<br>
+{{blackBeerry}}
+
+</p>
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('personCtrl', function($scope) {
+    $scope.Apple = "apple",
+    $scope.samsung = "samusng"
+    $scope.blackBeerry = "blackBeerry"
+    $scope.myVar = false;
+    $scope.toggle = function() {
+        $scope.myVar = !$scope.myVar;
+    };
+});
+</script> 
+
+</body>
+</html>

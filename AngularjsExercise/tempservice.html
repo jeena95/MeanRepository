@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Angularjs service</title>
+	<script src="/angular.min.js" ></script>
+	<script>
+		var app=angular.module('angularCustomApp',[]);
+		app.controller('customCtrl',function($scope,CalcCelsius,CalcFahrenheit){
+			$scope.getCelsius=function(){
+				return CalcCelsius.getCelsius($scope.value);
+			}
+			$scope.getFahrenheit=function(){
+				return CalcFahrenheit.getFahrenheit($scope.value);
+			}
+		});
+		app.service('CalcCelsius',function(){
+			this.getCelsius=function(a){
+				var temp=a;
+                var value= (temp - 32)*.5556;
+    			return value;
+			}
+		});
+		app.service('CalcFahrenheit',function(){
+			this.getFahrenheit=function(a){
+				var temp=a;
+                var value= temp * 1.8 + 32;
+                return value;
+			}
+		});
+	</script>
+</head>
+<body ng-app='angularCustomApp' ng-controller='customCtrl'>
+	Enter value:<input type="number" ng-model="value"/>
+	<p>Celsius:{{getCelsius()}}</p>
+	<p>Fahrenheit:{{getFahrenheit()}}</p>
+</body>
+</html>
