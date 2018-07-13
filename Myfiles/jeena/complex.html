@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<title>
+			Rectangle class
+		</title>
+		<script src ="Complex.js">
+		</script>
+	<head>
+	<body>
+		<script>
+			var real1;
+			var img1;
+			var real2;
+			var img2;
+			real1=parseFloat(prompt("Enter first real part"));
+			img1=parseFloat(prompt("Enter first imaginary part"));
+			var c1=new Complex(real1,img1);
+			real2=parseFloat(prompt("Enter second real part"));
+			img2=parseFloat(prompt("Enter second imaginary part"));
+			var c2=new Complex(real2,img2);
+			var c=c1.calculateSum(c2);
+			document.writeln(c.real+"+"+c.img+"i");
+		</script>
+	</body>
+<html>

@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<title>
+			Point class
+		</title>
+		<script src ="Point.js">
+		</script>
+	<head>
+	<body>
+		<script>
+			var x1;
+			var y1;
+			var x2;
+			var y2;
+			x1=parseFloat(prompt("Enter x of first point"));
+			y1=parseFloat(prompt("Enter y of first point"));
+			var p1=new Point(x1,y1);
+			x2=parseFloat(prompt("Enter x of second point"));
+			y2=parseFloat(prompt("Enter y of second point"));
+			var p2=new Point(x2,y2);
+			var d=p1.calculateDistance(p2);
+			document.writeln(d);
+		</script>
+	</body>
+<html>

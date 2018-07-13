@@ -1,0 +1,18 @@
+[ 
+	{
+ 		"name":"samsaung galaxy noteplus",
+		"cost":15000,
+		"avail":"In stock"
+	},
+	{
+		 
+		 "name":"apple iphone",
+		"cost":25000,
+		"avail":"In stock"
+	},
+	{
+		"name":"Redmi 9",
+		"cost":30000,
+		"avail":"On back order"
+	}
+]

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+	    table,th,td{border: 1px solid red}
+		th{color: blue}
+	</style>
+	<script src="/angular.min.js" >
+	</script>
+</head>
+<body ng-App="" ng-init="employee=[{empId:'e101',empName:'Ram'},{empId:'e102',empName:'Jeena'}]">
+	<table border="1" cellpadding="1">
+		<tr>
+				<th>Employee Id</th>
+				<th>Employee Name</th>
+		</tr>
+		<tr>
+				<td>Employee Id:{{employee[0].empId}}</td>
+				<td>Employee Name:{{employee[0].empName}}</td>
+		</tr>
+		<tr>
+				<td>Employee Id:{{employee[1].empId}}</td>
+				<td>Employee Name:{{employee[1].empName}}</td>
+		</tr>		
+	</table>
+</html>

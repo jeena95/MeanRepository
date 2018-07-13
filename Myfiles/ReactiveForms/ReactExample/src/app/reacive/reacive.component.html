@@ -1,0 +1,45 @@
+<!--<form [formGroup]="loginForm" (ngSubmit)="send()">
+  <fieldset style="width: 100px">
+    User name:<input formControlName="name"/><br>
+    Password:<input formControlName="password"/><br>
+    <button type="submit">Login</button>
+  </fieldset>
+  </form>-->
+<!--with validation-->
+ <!-- <form [formGroup]="loginForm" (ngSubmit)="send()">
+      <fieldset style="width: 100px">
+        User name:<input formControlName="name"/><br>
+        <div *ngIf="loginForm.get('name').invalid" class="login">
+         user name not valid
+        </div>
+        Password:<input formControlName="password"/><br>
+        <div *ngIf="loginForm.get('password').invalid" class="login">
+            password not valid
+           </div>
+        <button type="submit"[disabled]="loginForm.invalid"></button>
+      </fieldset>
+  </form>
+      Form values:{{loginForm.value|json}}-->
+      <form [formGroup]="loginForm" (ngSubmit)="send()">
+        <fieldSet style="width:100px">
+          user name:<input formControlName="name"/><br>
+          
+          <div *ngIf="loginForm.get('name').invalid"> 
+              <div *ngIf="loginForm.get('name').errors.reqiured">reqiured </div>
+              <div *ngIf="loginForm.get('name').errors.minlength">not matching </div>
+         
+        </div>
+          password :<input formControlName="password"/><br>
+      
+          <div *ngIf="loginForm.get('password').invalid"> 
+              <div *ngIf="loginForm.get('password').errors.reqiured">reqiured </div>
+              <div *ngIf="loginForm.get('password').errors.pattern">not matching </div>
+         
+        </div>
+        url:<input formControlName="url"/><br>
+        <div *ngIf="loginForm.get('url').touched && loginForm.get('url').invalid"> 
+        <div *ngIf="loginForm.get('url').errors.inValidUrl">check pattern!!!</div>
+        </div>
+          <button type="submit"[disabled]="loginForm.invalid">login</button>
+        </fieldSet>
+      </form>

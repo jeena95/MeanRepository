@@ -1,0 +1,22 @@
+<p>
+  set-example 
+</p>
+<div *ngFor="let fruit of fruits">
+  {{fruit}}
+</div>
+<p>Number of Items:{{size()}}</p>
+<p>contains APPLE:{{contains("APPLE")}}</p>
+<p>contains PEAR:{{contains("PEAR")}}</p>
+<!--delete-->
+{{delete('APPLE')}}
+<h2>set after deletion</h2>
+<div *ngFor="let fruit of fruits">
+  {{fruit}}
+</div>
+<!--add pear-->
+{{add('PEAR')}}
+<h2>set after add</h2>
+<p>Number of items:{{size()}}</p>
+<div *ngFor="let fruit of fruits">
+  {{fruit}}
+</div>

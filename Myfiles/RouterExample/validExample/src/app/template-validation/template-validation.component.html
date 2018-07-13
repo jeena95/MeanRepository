@@ -1,0 +1,22 @@
+
+<!--<input type="text"
+      name="userName"
+      [(ngModel)]="userName"
+      #tuserName="ngModel" required minlength="3"/>
+      <h2>Modified:{{tuserName.dirty}}</h2>
+      <h2>Unmodified:{{tuserName.pristine}}</h2>
+      <h2>valid:{{tuserName.valid}}</h2>
+      <h2>invalid:{{tuserName.invalid}}</h2>
+      <div *ngIf =tuserName.invalid class="error">username is not correct</div>-->
+<form #f="ngForm" (ngSubmit)="login(f)">
+      <label>Username</label>
+      <input type="text" name="userName" [(ngModel)]="userName"
+       #tuserName="ngModel" required minlength="3"/>
+       <div *ngIf =tuserName.invalid class="error">username is not correct</div><br>
+       <label>Password</label>
+      <input type="password" name="password" [(ngModel)]="password"
+       #tpassword="ngModel" required minlength="5"/>
+      <div *ngIf =tpassword.invalid class="error">password is not correct</div><br>
+      <button>Login</button>
+      <div *ngIf="f.invalid" class="error">Data Incorrect</div>
+</form>

@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+   <title>
+      7th example
+   </title>
+
+    <script> 
+       script  src="Factorial.js";
+    </script>
+</head>
+<body>
+  <script>
+    
+    var n;
+    var r;
+    var res;
+    
+    n=parseInt(prompt("Enter  n"));
+    r=parseInt(prompt("Enter  r"));
+    
+    
+   
+
+    function findNcr(n,r)
+    {
+      var factn;
+      var factnr;
+      var factr;
+      factn=findFactorial(n);
+      factr=findFactorial(r);
+      factnr=findFactorial(n-r);
+      return(factn/(factnr*factr));
+    } 
+    
+     
+    var res=findNcr(n,r);
+    alert("ncr : "+res);
+  </script>
+</body>
+</html>
+		

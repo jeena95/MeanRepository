@@ -1,0 +1,15 @@
+<form>
+  <table border="1" align="center">
+    <h2>Employee Payment</h2>
+    <label>EmployeeId:</label>
+    <input type="text" name="eid" /><br>
+    <label>Name:</label>
+    <input type="text" name="name"/><br>
+    <label>BasicPay:</label>
+    <input type="number" name="basicPay" [(ngModel)]="basicPay"/><br>
+    <input type="button" (click)="getNetpay()" value="calculate netpay"/><br>
+    <label>NetPay:</label>
+    <input type="number" name="netPay" [(ngModel)]="netPay"/><br>
+  </table>
+</form>
+    

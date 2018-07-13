@@ -1,0 +1,34 @@
+<form #f="ngForm" (ngSubmit)="submit(f)">
+  <table border="1" align="center">
+    <h2>Registration Form</h2>
+    <label>Name:</label>
+    <input type="text" name="name" [(ngModel)]="name" required/><br>
+     <label>DOB :</label>
+     <input type="date" name="date" [(ngModel)]="date" required/><br>
+     <label>Email:</label>
+     <input type="email" name="mail" [(ngModel)]="mail"
+      #temail="ngModel" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
+      <div *ngIf=temail.pattern.invalid>Email is not correct</div>
+     <br>
+     <label>Gender :</label>
+     <label>Male:</label>
+     <input type="radio" name="gender" value="male"  [(ngModel)]="gender" required>
+     <label>Female:</label>
+     <input type="radio" name="gender" value="female" [(ngModel)]="gender" required> <br>
+     <label>Country:</label>
+     <select required>
+     <option>India</option>
+     <option>China</option>
+     <option>UK</option>
+     <option>USA</option>
+     </select><br>
+     <label>Qualification:</label>
+     Graduate:
+     <input type="checkbox" name="qualif" value="Graduate"/>
+     Postgraduate:
+     <input type="checkbox" name="qualif" value="Postgraduate"/><br>
+     <button>Submit</button>
+     <div *ngIf="f.invalid && f.touched" class="error"></div>
+    </table>
+</form>
+

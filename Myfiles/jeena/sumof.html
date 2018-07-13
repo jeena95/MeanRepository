@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+   <title>
+    	4th example
+   </title>
+   <body>
+	<script>
+		var n;
+		var sum=0;
+		n=parseInt(prompt("Enter one number"));
+		while(n>0)
+		{
+			var s=n%10;
+			sum +=s;
+			n=Math.floor(n/10);
+		}
+		
+		
+		document.writeln("Sum of digits="+sum);
+              
+  
+	</script>
+  </body>
+</html>

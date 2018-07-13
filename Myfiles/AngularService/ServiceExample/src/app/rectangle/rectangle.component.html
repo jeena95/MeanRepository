@@ -1,0 +1,15 @@
+<p>
+  rectangle works!
+</p>
+<form>
+<label>Length</label>
+<input type="number" name="length" [(ngModel)]="length"/><br>
+<label>Breadth</label>
+<input type="number" name="breadth" [(ngModel)]="breadth"/><br>
+<label>Area</label>
+<input type="number" name="area" [(ngModel)]="area"/><br>
+<label>Perimeter</label>
+<input type="number" name="parimeter" [(ngModel)]="perimeter"/><br>
+<input type="button" (click)="calculateArea()" value="Area"/>
+<input type="button" (click)="calculatePerimeter()" value="Perimeter"/>
+</form>

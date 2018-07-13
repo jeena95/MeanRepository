@@ -1,0 +1,43 @@
+<form #loginForm="ngForm" >
+  <!--(ngSubmit)="submit(loginForm)" class="login"-->
+<fieldset style="width:200px">
+<legend>Register Form</legend>
+  <label>Username</label>
+  <input type="text" [(ngModel)]="name" name="name" #tname="ngModel"
+ minlength="3" required/><br>
+ <!-- specific validation -->
+<div *ngIf="tname.touched && tname.invalid">
+  <div *ngIf="tname.errors.required"><br>
+    username not entered
+  </div>
+  <div *ngIf="tname.errors.minlength">
+    usernsme needs to have minimum 3 letters
+  </div>
+</div>
+<!--<label>Password</label>
+<input type="text" [(ngModel)]="password" name="password"
+#tpassword="ngModel" pattern="[a-zA-Z][a-zA-Z0-9]*"/><br>
+<div *ngIf="tpassword.touched && tpassword.invalid">
+<div *ngIf="tpassword.errors.required">
+password not entered
+</div><br>
+<div ngIf="tpassword.errors.pattern"><br>
+  password does not match with the pattern
+</div><br>
+</div>-->
+Comments:<textarea name="comments" [(ngModel)]="comments"
+#tcomments="ngModel">
+</textarea><br>
+<select>
+  <option *ngFor="let contactMethod of contactMethods"
+  [ngValue]="contactMethod">
+  {{contactMethod}}
+</option>
+</select><br>
+<input type="checkbox" name="iSubscribed" [(ngModel)]="iSubscribed"
+#tiSubscribed="ngModel"/>Subscribe the mailing list<br>
+<button type="submit">Submit</button>
+<!--<button[disabled]="loginForm.valid">Login</button>-->
+</fieldset>
+</form>
+<h3>Form Values:{{loginForm.value|json}}</h3>

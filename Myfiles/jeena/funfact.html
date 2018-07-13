@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+   <title>
+    	7th example
+   </title>
+   <body>
+	<script>
+		
+		var num;
+		var fact;
+		
+		
+		function findFactorial(num)
+    {
+      var n=1;
+		  var fact=1;
+      while(n<=num)
+      {
+      	fact=fact*n;
+      	n++;
+      }
+      return fact;
+     } 
+    num=parseInt(prompt("Enter  num"));
+    fact=findFactorial(num);
+    alert("Result="+fact);
+
+	</script>
+  </body>
+</html>

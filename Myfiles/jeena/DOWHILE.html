@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+   <title>
+    	7th example
+   </title>
+   <body>
+	<script>
+		
+		var num1;
+		var num2;
+		var res=0;
+		var choice;
+		do
+		{
+		num1=parseInt(prompt("Enter first num"));
+		num2=parseInt(prompt("Enter second num"));
+		
+		choice=parseInt(prompt("Enter your choice : 1.+ 2.- 3.* 4./"));
+			switch(choice)
+			{
+			case 1:res=num1+num2;
+				  alert("Result="+res);;
+        		  break;
+
+        	case 2:res=num1-num2;
+				  alert("Result="+res);
+        		  break;
+       		case 3:res=num1*num2;
+				  alert("Result="+res);
+        		  break;
+       	 	case 4:res=num1/num2;
+				  alert("Result="+res);
+        		  break;
+			default :alert("invalid choice");
+		          break;
+	    	}
+	    	choice=prompt("Do you want to continue -Y/N");
+		}
+		
+		while(choice=='Y');
+	</script>
+  </body>
+</html>

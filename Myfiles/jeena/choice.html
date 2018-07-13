@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+   <title>
+    	7th example
+   </title>
+   <body>
+	<script>
+		
+		var num1;
+		var num2;
+		var res=0;
+		num1=parseInt(prompt("Enter first num"));
+		num2=parseInt(prompt("Enter second num"));
+		var choice;
+		choice=prompt("Enter your choice");
+		switch(choice)
+		{
+		
+		case '+':res=num1+num2;
+				document.writeln("Result="+res);
+        		break;
+
+        case '-':res=num1-num2;
+				document.writeln("Result="+res);
+        		break;
+        case '*':res=num1*num2;
+				document.writeln("Result="+res);
+        		break;
+        case '/':res=num1/num2;
+				document.writeln("Result="+res);
+        		break;
+		default :document.writeln("invalid choice");
+		        break;
+	    }
+	</script>
+  </body>
+</html>

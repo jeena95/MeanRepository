@@ -1,0 +1,38 @@
+db.getCollection('customer').find({})
+db.customer.update({cname:"monika"},{$set:{age:20}},{upsert:true})
+
+db.customer.updateMany({cname:"jeena"},{$set:{age:20}})
+db.customer.save({"_id" : ObjectId("5b2b45198b058b9eccfd64e8"),cname:"revathi",age:26})
+
+db.customer.remove({cname:"revathi",age:27})
+
+db.customer.findOne({cname:"jeena"})
+db.customer.insertMany([{cname:"Milta",age:45,phone:"9876678945"},{cname:"mercy",age:34}])
+
+db.list.find({},{a:{$slice:-2}})
+db.products.find( { sku: { $regex: /^ABC/i } } )
+
+
+db.customer.ensureIndex({cname:1},{unique:true})
+ 
+db.customer.getIndexes()  
+db.customer.dropIndex({cname:1})
+ 
+
+
+
+
+Date()
+new Date()
+
+db.datetable.find()
+
+
+
+db.datetable.insert({date:new Date("2007-08-07")})
+db.datetable.insert({date:new Date("2007-08-07")},{day:"thusday"})
+
+db.datetable.update({ "_id" : ObjectId("5b2b85d08b058b9eccfd64ef")},{$unset:{day:" "}})
+
+db.datetable.update({},{$set : {"day":1}},{upsert:false,multi:true})
+    

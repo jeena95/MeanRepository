@@ -1,0 +1,159 @@
+db.customer.distinct("cname")
+db.emp.insert({_id:"e1001",empname:"Ram",department:"Marketing",basicpay:5000,location:"chennai"})
+db.emp.insert({_id:"e1002",empname:"Raj",department:"Marketing",basicpay:6000,location:"chennai"})
+db.emp.insert({_id:"e1003",empname:"John",department:"Sales",basicpay:4000,location:"Bangalore"})
+db.emp.aggregate([{$group:{_id:"$department",total:{$sum:"$basicpay"}}}])
+db.emp.find()
+db.emp.drop()
+db.emp.aggregate([{$group:{_id:"$department",max:{$max:"$basicpay"}}}])
+db.emp.aggregate([{$group:{_id:"$department",min:{$min:"$basicpay"}}}])
+db.emp.aggregate([{$group:{_id:"$department",avg:{$avg:"$basicpay"}}}])
+
+db.emp.aggregate([{$group:{_id:"$department",total:{$sum:"$basicpay"}}},{$sort:{total: -1}}])
+db.emp.aggregate([{$match:{location:"chennai"}},{$group:{_id:"$department",total:{$sum:"$basicpay"}}},{$sort:{total: -1}}])
+db.emp.aggregate([{$group:{_id:{},total:{$sum:"$basicpay"}}}])
+
+
+
+
+
+
+db.getCollection('customer').find({})
+db.customer.update({cname:"cinu"},{$set:{age:24}})
+
+db.customer.remove({cname:"jinu"})
+db.customer.ensureIndex({cname:1},{unique:true})
+ 
+db.customer.getIndexes()  
+db.customer.dropIndex({cname:1})
+
+    
+ Date()
+new Date()
+
+db.datetable.find()
+
+
+
+db.datetable.insert({date:new Date("2007-08-07")})
+db.datetable.insert({date:new Date("2007-08-07")},{day:"thusday"})
+
+db.datetable.update({ "_id" : ObjectId("5b2b863b8b058b9eccfd64f0")},{$unset:{day:" "}})
+
+db.datetable.update({},{$set : {"day":1}},{upsert:false,multi:true})
+db.customer.distinct("cname")
+db.emp.insert({_id:"e1001",empname:"Ram",department:"Marketing",basicpay:5000,location:"chennai"})
+db.emp.insert({_id:"e1002",empname:"Raj",department:"Marketing",basicpay:6000,location:"chennai"})
+db.emp.insert({_id:"e1003",empname:"John",department:"Sales",basicpay:4000,location:"Bangalore"})
+db.emp.insert({_id:"e1004",empname:"Johny",department:"Sales",basicpay:7000,location:"chennai"})
+db.emp.insert({_id:"e1005",empname:"Johny",department:"Sales",basicpay:7000,location:"chennai"})
+db.emp.aggregate([{$group:{_id:"$department",total:{$sum:"$basicpay"}}}])
+db.emp.find()
+db 
+show collections
+show dbs
+use list
+db.list.find()
+db.list.find({"a.3":70})
+db.list.find({})
+db.list.find({a:{$all:[30,8,10,70]}})
+use Employee
+db.Employee.find({"deptinfo.dname":"sales"})
+db.Employee.find({salary:{$gte:6000}})
+db.Employee.find()
+db.Employee.insert({empid:"102",ename:"jose",salary:6000,deptinfo:{dname:"sales",Location:"bangalore"}})
+db.emp.find({empname:"Ram"})
+db.list.find({a:{$size:4}})
+db.emp.remove({_id:"e1005"})
+db.emp.find({basicpay:{$lte:5000}})
+db.Employee.find({$and:[{salary:{$gte:6000}},{"deptinfo.dname":"sales"}]})
+db.emp.update({empname:"Ram"},{$set:{basicpay:5500}})
+db.emp.drop()
+use Blog
+db.Blog.find().count()
+db.Blog.count({})
+db.emp.aggregate([{$group:{_id:"$department",max:{$max:"$basicpay"}}},{$sort:{max: 1}}])
+db.emp.aggregate([{$group:{_id:"$department",min:{$min:"$basicpay"}}}])
+db.emp.aggregate([{$group:{_id:"$department",avg:{$avg:"$basicpay"}}}])
+db.emp.aggregate([{$group:{_id:"$department",max:{$max:"$basicpay"}}}])
+
+db.emp.aggregate([{$group:{_id:"$department",total:{$sum:"$basicpay"}}},{$sort:{total: -1}}])
+db.emp.aggregate([{$match:{location:"chennai"}},{$group:{_id:"$department",total:{$sum:"$basicpay"}}},{$sort:{total: -1}}])
+
+use emp
+
+db.emp.find()
+
+db.emp.aggregate([{$group:{_id:{},total:{$sum:"$basicpay"}}}])
+
+////////////
+restaurant id
+Name
+address : street, city, pincode
+cuisine : multiple cuisine
+district
+Ratings: date, rating, score
+////////////
+
+db.restaurant.insert({_id:"r101",Name:"food corner",
+    address:{street:"manapakam",city:"chennai",pincode:10002},
+    cuisine:"south style",
+    Ratings:[{date:new Date("2018-06-22"),rating:4,score:6},
+    {date:new Date("2018-06-21"),rating:4,score:7},
+    {date:new Date("2018-06-21"),rating:3,score:6}]})
+db.restaurant.insert({_id:"r102",Name:"your food",
+    address:{street:"poroor",city:"chennai",pincode:10003},
+    cuisine:"south style",
+    Ratings:[{date:new Date("2018-06-22"),rating:4,score:7},
+    {date:new Date("2018-06-21"),rating:4,score:8},
+    {date:new Date("2018-06-21"),rating:3,score:6}]})
+db.restaurant.insert({_id:"r103",Name:"foody",
+    address:{street:"kochi",city:"kerala",pincode:20003},
+    cuisine:"spicy",
+    Ratings:[{date:new Date("2018-06-22"),rating:4,score:8},
+    {date:new Date("2018-06-21"),rating:4,score:7},
+    {date:new Date("2018-06-21"),rating:3,score:5}]})
+    
+   db.restaurant.aggregate([{$match:{cuisine:"south style"}},
+   {$group:{_id:"$address.city",total:{$sum:"$Ratings.score"}}},
+   {$sort:{total:-1}}])
+    
+    db.restaurant.find({"address.city":"chennai","Ratings.score":{$lte:8}},
+     {_id:1,Name:1,cuisine:1})
+  
+    db.restaurant.find({$and:[{"Ratings.score":{$gt:6}},{"Ratings.score":{$lt:9}}]})
+     db.restaurant.find({
+                        "Ratings.score":{$lt:9}
+                          }).sort({" address.street":1})
+
+1. Write a MongoDB query to display all the documents in the collection restaurants. 
+   db.restaurant.find() 
+
+2. Write a MongoDB query to display the fields restaurant_id, name, and cuisine for 
+   all the documents in the collection restaurant
+    db.restaurant.find({_id:"r101"},{Name:1,cuisine:1}) 
+    db.restaurant.find({},{_id:1,Name:1,cuisine:1}) 
+
+3. Write a MongoDB query to display the fields restaurant_id, name, and cuisine, but
+   exclude the field _id for all the documents in the collection restaurant. 
+ 
+4. Write a MongoDB query to display the fields restaurant_id, name, and zip code,
+    but exclude the field _id for all the documents in the collection restaurant. 
+5. Write a MongoDB query to display all the restaurant which is in Chennai
+6. Write a MongoDB query to display the first 5 restaurant which is in the district Chennai.  
+
+7. Write a MongoDB query to display the next 5 restaurants after skipping first 5 which are in the Chennai
+8. Write a MongoDB query to find the restaurants who achieved a score more than 90.  
+9. Write a MongoDB query to find the restaurants that achieved a score, more than 80 but less than 100. 
+
+
+
+
+
+
+
+
+
+
+
+
