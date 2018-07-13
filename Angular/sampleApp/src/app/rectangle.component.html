@@ -1,0 +1,32 @@
+<!--h1>Rectangle example</h1>
+<div>Area:{{calculateArea()}}</div>
+<div>Perimeter:{{calculatePerimeter()}}</div>
+Enter Length:<input type="number" [(ngModel)]="length"/><br>
+Enter Breadth:<input type="number" [(ngModel)]="breadth"/><br>
+<input type="button" value="CalculateArea" (click)= "calculateArea()"/>
+Area:<input type="number" [(ngModel)]="area"/><br>-->
+<!--<h2>Items</h2>
+<div *ngFor="let value of items;let i=index">
+      {{i}} = {{value}}
+
+    <input type="button"value="Delete" (click)="delete(i)"/>  
+</div>
+Enter Item:<input type="text" [(ngModel)]="item"/>
+<input type="button" value="Add" (click)="addItem()"/>-->
+
+<h2>student details</h2>
+
+<div>
+      {{students.name}}
+  
+      <div *ngFor="let subject of students.subjects">
+            {{subject.name}}
+            {{subject.mark}}
+           
+        </div>
+       <p> {{students.total()}}</p>
+        {{students.average()}}
+  </div>
+
+
+       
