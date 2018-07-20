@@ -1,0 +1,26 @@
+<p>
+  set works!
+</p>
+<div *ngFor="let fruit of fruits">
+{{fruit}}
+</div>
+
+<p>number of items:{{size()}}</p>
+<p>contains Apple :{{contains('apple')}}</p>
+<p>contains pear :{{contains("pear")}}</p>
+{{delete('pineApple')}}
+<h2>set after deletion</h2>
+<p>
+  number of items :{{size()}}
+</p>
+<div *ngFor="let friut of fruits">
+  {{friut}}
+</div>
+<div>
+  {{add("jabutan")}}
+</div>
+<p ngNonBindable>{{hello}}</p>
+
+<img src="{{stu.imgSrc}}">
+
+++
